@@ -121,7 +121,12 @@ function calculateSubtotals() {
 
 // Exercise 4
 function calculateTotal() {
+    var total=0;
     // Calculate total price of the cart either using the "cartList" array
+    for (let i in cartList){        
+        total+=cartList[i].price;
+    }
+    console.log("Total = "+total);
 }
 
 // Exercise 5
