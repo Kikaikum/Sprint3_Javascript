@@ -100,7 +100,8 @@ function calculateSubtotals() {
     var totalClothes=0;
     // 1. Create a for loop on the "cartList" array 
     for(var i =0; i< cartList.length;i++){
-        console.log(cartList[i].type);
+        
+    // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
         switch(cartList[i].type){
             case "grocery":
                 totalGrocery+=cartList[i].price;                
@@ -116,7 +117,6 @@ function calculateSubtotals() {
     console.log("total Grocery= "+ totalGrocery);
     console.log("total Beauty= "+ totalBeauty);
     console.log("total Clothes= "+ totalClothes);
-    // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
 }
 
 // Exercise 4
