@@ -80,22 +80,12 @@ var total = 0;
 // Exercise 1
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
-    
     for(var i =0; i< products.length;i++){
-
         if (products[i].id==id){
+            // 2. Add found product to the cartList array
             cartList.push(products[i]);
         }
     }
-
-        console.log(cartList);
-        
-        
-
-
-
-    
-    // 2. Add found product to the cartList array
 }
 
 // Exercise 2
@@ -105,20 +95,27 @@ function cleanCart() {
 
 // Exercise 3
 function calculateSubtotals() {
+    var totalGrocery=0;
+    var totalBeauty=0;
+    var totalClothes=0;
     // 1. Create a for loop on the "cartList" array 
     for(var i =0; i< cartList.length;i++){
-        console.log(cartList[i]);
+        console.log(cartList[i].type);
         switch(cartList[i].type){
             case "grocery":
-                var price=subtotal.grocery[value];
-                console.log(price);
+                totalGrocery+=cartList[i].price;                
                 break;
             case "beauty":
+                totalBeauty+=cartList[i].price;
                 break;
             case "clothes":
+                totalClothes+=cartList[i].price;
                 break;
         }
     }
+    console.log("total Grocery= "+ totalGrocery);
+    console.log("total Beauty= "+ totalBeauty);
+    console.log("total Clothes= "+ totalClothes);
     // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
 }
 
