@@ -99,18 +99,18 @@ function calculateSubtotals() {
     var totalBeauty=0;
     var totalClothes=0;
     // 1. Create a for loop on the "cartList" array 
-    for(var i =0; i< cartList.length;i++){
+    for(i in cart){
         
     // 2. Implement inside the loop an if...else or switch...case to add the quantities of each type of product, obtaining the subtotals: subtotalGrocery, subtotalBeauty and subtotalClothes
-        switch(cartList[i].type){
+        switch(cart[i].type){
             case "grocery":
-                totalGrocery+=cartList[i].price;                
+                totalGrocery+=cart[i].subtotalWithDiscount;                
                 break;
             case "beauty":
-                totalBeauty+=cartList[i].price;
+                totalBeauty+=cart[i].subtotalWithDiscount;
                 break;
             case "clothes":
-                totalClothes+=cartList[i].price;
+                totalClothes+=cart[i].subtotalWithDiscount;
                 break;
         }
     }
@@ -123,8 +123,8 @@ function calculateSubtotals() {
 function calculateTotal() {
     var total=0;
     // Calculate total price of the cart either using the "cartList" array
-    for (let i in cartList){        
-        total+=cartList[i].price;
+    for (i in cart){        
+        total+=cart[i].subtotal;
     }
     console.log("Total = "+total);
 }
@@ -157,7 +157,7 @@ function generateCart() {
 // Exercise 6
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
-    generateCart();
+    
     for(i in cart){
         if(cart[i].id==1 && cart[i].quantity>2){
             cart[i].subtotalWithDiscount=cart[i].quantity*10;            
@@ -175,6 +175,27 @@ function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+   
+    for(i in products){
+        if (products[i].id==id){
+            if(cart.includes(products[i]) ){
+                for(e in cart){
+                    if(cart[e]==products[i]){
+                        cart[e].quantity+=1;
+                        cart[e].subtotal+=cart[e].price;
+                        cart[e].subtotalWithDiscount+=cart[e].price;
+                    }
+                }                           
+            }
+            else{
+                products[i].quantity=1;
+                products[i].subtotal=products[i].price;
+                products[i].subtotalWithDiscount=products[i].price;
+                cart.push(products[i]);                
+            }
+        }
+    }
+    console.log(cart);
 }
 
 // Exercise 9
