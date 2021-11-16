@@ -138,12 +138,15 @@ function generateCart() {
             for(e in cart){
                 if(cart[e]==cartList[i]){
                     cart[e].quantity+=1;
+                    cart[e].subtotal+=cart[e].price;
+                    cart[e].subtotalWithDiscount+=cart[e].price;
                 }
-            }
-            
+            }            
         }
         else{
             cartList[i].quantity=1;
+            cartList[i].subtotal=cartList[i].price;
+            cartList[i].subtotalWithDiscount=cartList[i].price;
             cart.push(cartList[i]);
         }
     }
@@ -154,6 +157,17 @@ function generateCart() {
 // Exercise 6
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    generateCart();
+    for(i in cart){
+        if(cart[i].id==1 && cart[i].quantity>2){
+            cart[i].subtotalWithDiscount=cart[i].quantity*10;            
+        }
+        if(cart[i].id==3 && cart[i].quantity>=10){
+            cart[i].subtotalWithDiscount=cart[i].subtotalWithDiscount*(2/3);            
+        }
+        
+    }
+    console.log(cart);
 }
 
 // Exercise 7
