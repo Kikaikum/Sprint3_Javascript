@@ -200,6 +200,17 @@ function addToCart(id) {
 
 // Exercise 9
 function removeFromCart(id) {
+
+    for(i in cart){
+        if(cart[i].id=id){
+            if (cart[i].quantity>1){
+                cart[i].quantity-=1;
+            }
+            else{
+                cart.splice(i, 1);
+            }
+        }
+    }
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 }
