@@ -136,6 +136,6 @@ function validate() {
         emailclass.classList.add("invalid");        
     }
     
-    console.log(email);
+    
 
 }

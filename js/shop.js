@@ -218,4 +218,13 @@ function removeFromCart(id) {
 // Exercise 10
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    console.log(cart);
+    cartId=document.getElementById("list")
+
+    for (i in cart){
+        var producto=document.createElement("li");
+        producto.textContent=cart[i].name+"--"+cart[i].quantity;
+        
+        cartId.appendChild(producto);
+    }
 }
