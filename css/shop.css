@@ -24,3 +24,6 @@ body{
     right: 0;
     margin-right: 1rem;
 }
+td:nth-child(even){
+    text-align: center;
+}

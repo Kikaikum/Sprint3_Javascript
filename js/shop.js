@@ -220,11 +220,19 @@ function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
     console.log(cart);
     cartId=document.getElementById("list")
-
+    
     for (i in cart){
-        var producto=document.createElement("li");
-        producto.textContent=cart[i].name+"--"+cart[i].quantity;
-        
-        cartId.appendChild(producto);
+        var fila=document.createElement("tr");
+        var producto=document.createElement("td");
+        var cantidad=document.createElement("td");
+        producto.textContent=cart[i].name;
+        cantidad.textContent=cart[i].quantity;
+        fila.appendChild(producto);
+        fila.appendChild(cantidad);
+        cartId.appendChild(fila);
+    }
+    if(cart.length>0){
+        var selecto = document.getElementById('select'); 
+        selecto.style.display="none";
     }
 }
